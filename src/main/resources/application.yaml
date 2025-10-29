@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: device-management
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+  servlet:
+    context-path: /device-api/v1
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
