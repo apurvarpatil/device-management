@@ -115,7 +115,7 @@ public class DeviceService {
     return changedFields;
   }
 
-  private DeviceDto toDto(Device device) {
+  public DeviceDto toDto(Device device) {
     return DeviceDto.builder()
         .id(device.getId())
         .name(device.getName())
@@ -130,7 +130,6 @@ public class DeviceService {
         .name(deviceDto.name())
         .brand(deviceDto.brand())
         .state(deviceDto.state())
-        //        .creationTime(LocalDateTime.now())
         .build();
   }
 }
