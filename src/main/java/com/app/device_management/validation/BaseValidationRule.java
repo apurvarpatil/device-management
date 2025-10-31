@@ -6,16 +6,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class BaseValidationRule<T> implements ValidationRule<T> {
-    private ValidationRule<T> next;
+  private ValidationRule<T> next;
 
-    @Override
-    public void validate(ValidationContext<T> context) {
+  @Override
+  public void setNext(ValidationRule<T> next) {
+    this.next = next;
+  }
 
-        doValidate(context);
-        if (next != null) {
-            next.validate(context);
-        }
+  protected void validateNext(ValidationContext<T> context) {
+    if (next != null) {
+      next.validate(context);
     }
-
-    protected abstract void doValidate(ValidationContext<T> context);
+  }
 }

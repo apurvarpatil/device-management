@@ -8,11 +8,18 @@ TAG = latest
 help:	## Show this help menu
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+
+check-style:    ## Check code style and report violations
+	./gradlew checkstyleMain
+
+apply-style:  ## Apply code style formatting rules
+	./gradlew spotlessApply
+
 build:	## Build the application
 	./gradlew clean build
 
 docker-build:	## Build Docker image
-	docker build -t $(APP_NAME):$(TAG) .
+	docker build --no-cache -t $(APP_NAME):$(TAG) .
 
 docker-run:	## Run Docker container
 	docker run -d --name $(APP_NAME) -p $(PORT):$(PORT) $(APP_NAME):$(TAG)
