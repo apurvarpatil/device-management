@@ -25,8 +25,8 @@ public class DeviceController {
 
     DeviceDto createdDevice = deviceService.createDevice(deviceDto);
     return ResponseEntity.created(URI.create("/device/v1/" + createdDevice.id()))
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(createdDevice);
+        .contentType(MediaType.APPLICATION_JSON)
+        .body(createdDevice);
   }
 
   @PutMapping("/{id}")

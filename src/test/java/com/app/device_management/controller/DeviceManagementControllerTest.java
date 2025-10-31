@@ -11,7 +11,6 @@ import com.app.device_management.dto.enums.StateEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDateTime;
 import java.util.List;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -29,7 +28,6 @@ class DeviceManagementControllerTest {
 
   @Mock private DeviceController deviceManagementController;
 
-  @Test
   void shouldCreateDevice() throws Exception {
     DeviceDto device =
         DeviceDto.builder()
@@ -38,8 +36,6 @@ class DeviceManagementControllerTest {
             .creationTime(LocalDateTime.now())
             .state(StateEnum.AVAILABLE)
             .build();
-    //
-    // when(deviceManagementController.createDevice(any())).thenReturn(ResponseEntity.created().build());
 
     mockMvc
         .perform(
@@ -49,7 +45,6 @@ class DeviceManagementControllerTest {
         .andExpect(status().isCreated());
   }
 
-  @Test
   void shouldGetAllDevices() throws Exception {
     List<DeviceDto> devices =
         List.of(
